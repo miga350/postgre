@@ -1,1 +1,1 @@
-worker: python botposl.py
+worker: python3 botposl.py
