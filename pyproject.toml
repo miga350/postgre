@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "your-bot-name"
+version = "0.1.0"
+description = ""
+authors = ["you@example.com"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-telegram-bot = "20.3"
+python-dotenv = "*"
+PyPDF2 = "*"
+python-docx = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
