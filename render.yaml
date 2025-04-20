@@ -1,0 +1,7 @@
+services:
+  - type: worker
+    name: registration-bot
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python3 botposl.py"
+    autoDeploy: true
