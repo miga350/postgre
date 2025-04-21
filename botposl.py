@@ -142,12 +142,12 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     }
 
     log_user_action(user_id, update.effective_user.username, "загрузил документ", document.file_name, analysis)
-    await update.message.reply_text("Для получения ответа необходимо перевести 500 рублей на карту Таджикистана.\n"
+    await update.message.reply_text("Для получения результата необходимо:"
+                                    "1️⃣ Совершить перевод 500 рублей на карту Таджикистана на банк «Душанбе-Сити».\n"
                                    "Реквизиты для перевода:\n"
-                                   "- По номеру телефона: +992 111 88 1700\n"
-                                   "- Банк получателя: Душанбе сити \n"
-                                   "После перевода отправьте электронный чек!\n\n"
-                                   "❌ БЕЗ ЧЕКА ОТВЕТ НЕ ПОЛУЧИТЕ!!!")
+                                   " ▫️ Номер получателя: +992 111 88 1700\n"
+                                   "2️⃣ После перевода обязательно отправьте электронный чек в этот чат \n"
+                                   "⚠️ Без подтверждения платежа мы не сможем обработать ваш запрос!\n\n")
     return VERIFY_PAYMENT
 
 async def verify_payment_document(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -171,7 +171,7 @@ async def verify_payment_document(update: Update, context: ContextTypes.DEFAULT_
 
     os.remove(file_path)
     normalized = re.sub(r"\s+", "", content.lower()).replace("₽", "").replace(",", "").replace(".", "")
-    if "2785" in normalized and "+992000992183" in normalized:
+    if "500" in normalized and "+992111881700" in normalized:
         info = user_docs.get(update.effective_user.id, {})
         try:
             os.remove(info.get("file_path", ""))
