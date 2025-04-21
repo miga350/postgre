@@ -115,8 +115,8 @@ def log_user_action(user_id, username, action, doc_name, result):
 
 async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     document = update.message.document
-    if not document or document.file_size > 20 * 1024 * 1024:
-        await update.message.reply_text("❌ Файл должен быть менее 20 МБ.")
+    if not document or document.file_size > 11 * 1024 * 1024:
+        await update.message.reply_text("❌ Файл должен быть менее 11 МБ.")
         return CHECK_DOCUMENT
 
     mime_type, _ = mimetypes.guess_type(document.file_name)
